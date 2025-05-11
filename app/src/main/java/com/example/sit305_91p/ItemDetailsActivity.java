@@ -1,4 +1,4 @@
-package com.example.sit305_71p;
+package com.example.sit305_91p;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.sit305_71p.data.DatabaseHelper;
+import com.example.sit305_91p.data.DatabaseHelper;
 
 public class ItemDetailsActivity extends AppCompatActivity {
 

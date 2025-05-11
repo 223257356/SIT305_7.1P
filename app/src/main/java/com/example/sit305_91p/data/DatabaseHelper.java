@@ -1,4 +1,4 @@
-package com.example.sit305_71p.data;
+package com.example.sit305_91p.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "lostFound.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table Name
     private static final String TABLE_ITEMS = "items";
@@ -25,6 +25,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String KEY_ITEM_DESCRIPTION = "description";
     public static final String KEY_ITEM_DATE = "date";
     public static final String KEY_ITEM_LOCATION = "location";
+    public static final String KEY_ITEM_LATITUDE = "latitude";
+    public static final String KEY_ITEM_LONGITUDE = "longitude";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -49,7 +51,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + KEY_ITEM_PHONE + " TEXT,"
                 + KEY_ITEM_DESCRIPTION + " TEXT,"
                 + KEY_ITEM_DATE + " TEXT,"
-                + KEY_ITEM_LOCATION + " TEXT"
+                + KEY_ITEM_LOCATION + " TEXT,"
+                + KEY_ITEM_LATITUDE + " REAL,"
+                + KEY_ITEM_LONGITUDE + " REAL"
                 + ")";
         db.execSQL(CREATE_ITEMS_TABLE);
     }
@@ -69,7 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // --- CRUD Operations (Create, Read, Update, Delete) --- //
 
     // Add a new item
-    public long addItem(String postType, String name, String phone, String description, String date, String location) {
+    public long addItem(String postType, String name, String phone, String description, String date, String location, double latitude, double longitude) {
         SQLiteDatabase db = getWritableDatabase();
         long id = -1; // Default value indicating failure
 
@@ -82,6 +86,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_ITEM_DESCRIPTION, description);
             values.put(KEY_ITEM_DATE, date);
             values.put(KEY_ITEM_LOCATION, location);
+            values.put(KEY_ITEM_LATITUDE, latitude);
+            values.put(KEY_ITEM_LONGITUDE, longitude);
 
             // Insert row
             id = db.insertOrThrow(TABLE_ITEMS, null, values);
@@ -99,6 +105,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllItems() {
         SQLiteDatabase db = getReadableDatabase();
         return db.query(TABLE_ITEMS, null, null, null, null, null, null);
+    }
+
+    // Get all items that have location data
+    public Cursor getAllItemsWithLocation() {
+        SQLiteDatabase db = getReadableDatabase();
+        // Select items where latitude and longitude are not null (or some default invalid value if you use one)
+        String selection = KEY_ITEM_LATITUDE + " IS NOT NULL AND " + KEY_ITEM_LONGITUDE + " IS NOT NULL";
+        return db.query(TABLE_ITEMS, null, selection, null, null, null, null);
     }
 
     // Delete an item by ID

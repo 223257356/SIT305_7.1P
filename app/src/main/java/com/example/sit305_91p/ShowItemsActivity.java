@@ -1,4 +1,4 @@
-package com.example.sit305_71p;
+package com.example.sit305_91p;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sit305_71p.adapter.ItemAdapter;
-import com.example.sit305_71p.data.DatabaseHelper;
+import com.example.sit305_91p.adapter.ItemAdapter;
+import com.example.sit305_91p.data.DatabaseHelper;
 
 public class ShowItemsActivity extends AppCompatActivity implements ItemAdapter.OnItemClickListener {
 

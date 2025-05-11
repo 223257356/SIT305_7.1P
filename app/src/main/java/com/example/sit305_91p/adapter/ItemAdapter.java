@@ -1,4 +1,4 @@
-package com.example.sit305_71p.adapter;
+package com.example.sit305_91p.adapter;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sit305_71p.R;
-import com.example.sit305_71p.data.DatabaseHelper;
+import com.example.sit305_91p.R;
+import com.example.sit305_91p.data.DatabaseHelper;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 

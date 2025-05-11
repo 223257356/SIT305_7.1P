@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sit305_71p"
+    namespace = "com.example.sit305_91p"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.sit305_71p"
+        applicationId = "com.example.sit305_91p"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -45,4 +45,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Google Maps Services
+    implementation("com.google.android.gms:play-services-maps:19.2.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation("com.google.android.libraries.places:places:4.1.0")
 }

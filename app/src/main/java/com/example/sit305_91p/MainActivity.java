@@ -1,4 +1,4 @@
-package com.example.sit305_71p;
+package com.example.sit305_91p;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnCreateAdvert, btnShowItems;
+    Button btnCreateAdvert, btnShowItems, btnShowMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnCreateAdvert = findViewById(R.id.btnCreateAdvert);
         btnShowItems = findViewById(R.id.btnShowItems);
+        btnShowMap = findViewById(R.id.btnShowMap);
 
         btnCreateAdvert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
                 // Intent to navigate to ShowItemsActivity
                 Intent showItemsIntent = new Intent(MainActivity.this, ShowItemsActivity.class);
                 startActivity(showItemsIntent);
+            }
+        });
+
+        btnShowMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent to navigate to MapActivity (to be created)
+                Intent mapIntent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(mapIntent);
             }
         });
     }
